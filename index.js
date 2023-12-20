@@ -3,7 +3,8 @@ const bodyParser = require("body-parser")
 
 const app = express();
 
-const cors = require("cors")
+const cors = require("cors");
+const connectDB = require('./utils/db');
 
 app.use(cors());
 
