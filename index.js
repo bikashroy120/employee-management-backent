@@ -5,6 +5,8 @@ const app = express();
 
 const cors = require("cors");
 const connectDB = require('./utils/db');
+const ErrorMiddleware = require('./middleware/error');
+
 
 app.use(cors());
 
@@ -17,3 +19,22 @@ app.listen(8000,()=>{
     console.log("server is running ")
     connectDB()
 })
+
+
+// testing api
+app.get("/test",(req,res,next)=>{
+    res.status(200).json({
+        message:"this is test route",
+        success:true
+    })
+})
+
+
+// unnone route
+app.all("*",(req,res,next)=>{
+    const err = new Error("Route not valied !")
+    err.statusCode = 404;
+    next(err)
+})
+
+app.use(ErrorMiddleware)
