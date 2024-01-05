@@ -6,6 +6,7 @@ const app = express();
 const cors = require("cors");
 const connectDB = require('./utils/db');
 const ErrorMiddleware = require('./middleware/error');
+const employeeRoute = require("./routes/employeRoute")
 
 
 app.use(cors());
@@ -19,6 +20,8 @@ app.listen(8000,()=>{
     console.log("server is running ")
     connectDB()
 })
+
+app.use("/api/v1/",employeeRoute)
 
 
 // testing api
