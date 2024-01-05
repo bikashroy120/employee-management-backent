@@ -16,10 +16,6 @@ app.use(bodyParser.json());
 
 
 
-app.listen(8000,()=>{
-    console.log("server is running ")
-    connectDB()
-})
 
 app.use("/api/v1/",employeeRoute)
 
@@ -41,3 +37,9 @@ app.all("*",(req,res,next)=>{
 })
 
 app.use(ErrorMiddleware)
+
+
+app.listen(8000,()=>{
+    console.log("server is running ")
+    connectDB()
+})
